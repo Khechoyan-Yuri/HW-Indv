@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 //import com.twilio.Twilio;
 //import com.twilio.rest.api.v2010.account.Message;
-//import com.twilio.rest.lookups.v1.PhoneNumber;
+//import com.twilio.type.PhoneNumber;
 
 import static android.content.ContentValues.TAG;
 
@@ -97,6 +97,7 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
                 position++;
 
                 */
+
 
                 //Throw toast for verification
                 Toast.makeText(this, "Submission Complete! Confirmation is being sent", Toast.LENGTH_LONG).show();

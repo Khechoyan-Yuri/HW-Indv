@@ -90,9 +90,9 @@ public class CustomerListActivity extends ActionBarActivity {
         int id = item.getItemId();
         if (id == R.id.add_record) {
 
+            //Launches AddCustomerActivity through Intent
             Intent add_mem = new Intent(this, AddCustomerActivity.class);
             startActivity(add_mem);
-
         }
         return super.onOptionsItemSelected(item);
     }

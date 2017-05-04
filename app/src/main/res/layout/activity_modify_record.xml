@@ -6,23 +6,21 @@
     android:padding="10dp" >
 
     <EditText
-        android:id="@+id/subject_edittext"
+        android:id="@+id/name_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:ems="10"
-        android:hint="enter_title" />
+        android:hint="Enter Name" />
 
     <EditText
-        android:id="@+id/description_edittext"
+        android:id="@+id/phnumber_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="enter_desc"
-        android:inputType="textMultiLine"
+        android:hint="Enter #"
         android:minLines="5" >
     </EditText>
-
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -36,14 +34,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="btn_update" />
+            android:text="Update" />
 
         <Button
             android:id="@+id/btn_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="btn_delete" />
+            android:text="Delete" />
     </LinearLayout>
 
 </LinearLayout>

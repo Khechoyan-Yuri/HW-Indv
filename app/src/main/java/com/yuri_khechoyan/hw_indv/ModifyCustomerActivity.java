@@ -37,7 +37,7 @@ public class ModifyCustomerActivity extends Activity implements OnClickListener 
 
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
-        String name = intent.getStringExtra("title");
+        String name = intent.getStringExtra("name");
         String phnum = intent.getStringExtra("phnum");
 
         _id = Long.parseLong(id);
@@ -74,4 +74,3 @@ public class ModifyCustomerActivity extends Activity implements OnClickListener 
         startActivity(home_intent);
     }
 }
-

@@ -80,7 +80,6 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
 
                 /*
 
-
                 //Twilio code in order to send confirmation text message
                 //Create message for the user - sent to their mobile numbers' (unformatted)
                 Message message = Message.creator(new PhoneNumber("+1" + phonenum),
@@ -96,7 +95,6 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
                 //Increments position - so that next person can
                 //receive their current position in queue
                 position++;
-
 
                 */
 

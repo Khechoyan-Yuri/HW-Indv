@@ -60,7 +60,7 @@ public class CustomerListActivity extends ActionBarActivity {
                 TextView nameTextView = (TextView) view.findViewById(R.id.name);
                 TextView numberTextView = (TextView) view.findViewById(R.id.number);
 
-                //
+                //Retrieves input from fields & converts to String
                 String id = idTextView.getText().toString();
                 String name = nameTextView.getText().toString();
                 String number = numberTextView.getText().toString();
@@ -83,7 +83,7 @@ public class CustomerListActivity extends ActionBarActivity {
         return true;
     }
 
-   //When the '+' button is pressed, it invokes the AddCustomerActivity
+    //When the '+' button is pressed, it invokes the AddCustomerActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 

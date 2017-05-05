@@ -56,16 +56,38 @@ public class DBManager {
 
     //Method used to update user info in ListView - ModifyCustomerActivity
     public int update(long _id, String name, String phonenum) {
+
         ContentValues contentValues = new ContentValues();
         contentValues.put(DatabaseHelper.NAME, name);
         contentValues.put(DatabaseHelper.PHONENUM, phonenum);
-        int i = database.update(DatabaseHelper.TABLE_NAME, contentValues, DatabaseHelper._ID + " = " + _id, null);
+        int i = database.update(DatabaseHelper.TABLE_NAME, contentValues, DatabaseHelper._ID + " <= " + _id, null);
         return i;
+
+
+
+        //getRowFromId(context, Id);
+
     }
+
+    /*
+    public static long getRowFromId(Context context, int Id) {
+        DatabaseHelper dataBase = new DatabaseHelper(context);
+        SQLiteDatabase conn = dataBase.getWritableDatabase();
+        String query = "SELECT COUNT (*) FROM " + dataBase.TABLE_NAME + " WHERE "
+                + DatabaseHelper._ID + " <= " + Id;
+
+        "SELECT ROWNUMBER(id, 4) FROM myTable WHERE aCondition == 1 ORDER BY id
+
+        return conn.compileStatement(query).simpleQueryForLong();
+    }
+
+    */
 
     //Method called if customer will be deleted from the DB & ListView - ModifyCustomerActivity
     public void delete(long _id) {
         database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper._ID + "=" + _id, null);
+
+
     }
 
 }

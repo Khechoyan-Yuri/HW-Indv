@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Table Name
-    public static final String TABLE_NAME = "COUNTRIES";
+    public static final String TABLE_NAME = "CUSTOMERS";
 
     // Table columns
     public static final String _ID = "_id";
@@ -21,7 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final int DB_VERSION = 1;
 
     // Creating table query
-    private static final String CREATE_TABLE = "create table " + TABLE_NAME + "(" + _ID
+    private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + _ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT, " + NAME + " TEXT NOT NULL, " + PHONENUM + " TEXT);";
 
     //Creates Constructor

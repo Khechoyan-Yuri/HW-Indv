@@ -8,62 +8,54 @@ package com.yuri_khechoyan.hw_indv;
     INSTRUCTOR NAME: Dr. Tian
     PROJECT NAME: Individual PROJECT #1 (Final)
     PRODUCTION NUMBER: HW-Indv-1F
-    DUE DATE: 05/5/2017
+    DUE DATE: 05/8/2017
 //##########################################################################
 
 SUMMARY
 
     This program is designed to be a Queue Based Application.
-    When app is launched, user will be able to add themselves to the Queue
+    When app is launched, app asks to use permission to send text messages to Customers.
+    Customer will be able to add themselves to the Queue
     by inputting their name & phone number.
-    The Phone number would (theoretically) would be used in order to
-    When inside of the account, the end user has the ability to create tasks that
-    would be completed by other users (called Dundies).
-    The end-user that creates tasks, has the ability to:
+    The Phone number would be used in order to send the Customer an SMS letting them know
+    that they have successfully registered.
+    After registration, customer is added to the internal Database (SQLite)
+    Application will be able to show everyone a list of who is in the Queue (ListView)
 
-        -Set a title for the task
-        -Provide details (if title is not self-explanatory)
-        -Set location where the task(s) need to take place (University campus)*
-        -Set the payment amount for this task that needs to be completed.**
+    Application has a feature where it does NOT add the customer to the list if either:
 
+        -Name field is left blank
+        -Phone Number is left blank
+        -Both fields are left blank
 
-							------WHEN TASK IS SUBMITTED-----
+        Text Message that will be sent:
 
-    The Dundie(s) have the ability to either accept or decline the tasks that are posted
-    App will also let the end-user know who is currently handling the task (if task is accepted) (future implementation)
+        "Confirmed! Thank you for registering with [Company], [name]! You are currently (x)*
+        in line. Please be patient with us. Your name will be called. - [Company]"
 
-
-        *  This app will mainly be used by University students. Therefore, typical location
-           for tasks would be the University at which the student resides/attends. (line 25)
-
-        ** The minimum required payment is $5. The end-user that is creating the task can
-           set a higher payment amount (based on task difficulty & end-user's discretion).
-           Tips may also be applied (if the end-user so chooses) (line 26) (future implementation?)
-
-
+        * - 'x' is the current position where the customer stands in the list
+        
 //##########################################################################
 
 INPUT
 
-        -Task Name
-        -Task Details (if needed)
-        -Task Location (Required)
-        -Payment Amount for Task (minimum = $5; Tips are optional)
+        -Press '+' Button
+        -Enter Name
+        -Enter Phone Number
+        -Tap the 'Register' Button
 
 //##########################################################################
 
 OUTPUT
 
-    Application will post newly created tasks to the overall Task board (based on GPS location & radius)
-    When Task is completed, it is removed
+    Application will post newly added customer to the list/queue & send them a text message
 
 //##########################################################################
 
 ASSUMPTIONS
 
-- App has to have a stable WiFi or Cellular Connection (3G/4G/LTE, etc.)
-- End-user has the ability to fill out the EditText fields properly
-- The dundie has the ability to carry out & complete the tasks that they accept
+    - App has to have a stable WiFi or Cellular Connection (3G/4G/LTE, etc.)
+    - End-user has the ability to fill out the EditText fields properly
 */
 //##########################################################################
 

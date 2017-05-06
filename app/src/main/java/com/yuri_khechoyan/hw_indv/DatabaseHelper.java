@@ -13,6 +13,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String _ID = "_id";
     public static final String NAME = "name";
     public static final String PHONENUM = "phonenumber";
+    public static String POSINLINE = "position";
 
     // Database Information
     static final String DB_NAME = "CUSTOMERS.DB";
@@ -23,6 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Creating table query
     private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + _ID
             + " INTEGER PRIMARY KEY, " + NAME + " TEXT NOT NULL, " + PHONENUM + " TEXT);";
+            /*+POSINLINE + "INTEGER*/
 
     //Creates Constructor
     public DatabaseHelper(Context context) {

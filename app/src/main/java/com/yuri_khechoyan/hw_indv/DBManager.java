@@ -16,6 +16,8 @@ public class DBManager {
     //Initializes SQLite database
     private SQLiteDatabase database;
 
+
+
     //Creates DBManager constructor
     public DBManager(Context c) {
         //Creates context for the DBManager
@@ -35,10 +37,11 @@ public class DBManager {
     //}
 
     //Method used to insert information ito the Database
-    public void insert(String name, String phonenum) {
+    public void insert(String name, String phonenum /*String position*/) {
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper.NAME, name);
         contentValue.put(DatabaseHelper.PHONENUM, phonenum);
+        //contentValue.put(DatabaseHelper.POSINLINE, position);
         database.insert(TABLE_NAME, null, contentValue);
         database.close();
     }
@@ -58,11 +61,12 @@ public class DBManager {
     }
 
     //Method used to update user info in ListView - ModifyCustomerActivity
-    public int update(long _id, String name, String phonenum) {
+    public int update(long _id, String name, String phonenum /*String position*/) {
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(DatabaseHelper.NAME, name);
         contentValues.put(DatabaseHelper.PHONENUM, phonenum);
+        //contentValues.put(DatabaseHelper.POSINLINE, position);
         int i = database.update(TABLE_NAME, contentValues, DatabaseHelper._ID + " = " + _id, null);
 
 

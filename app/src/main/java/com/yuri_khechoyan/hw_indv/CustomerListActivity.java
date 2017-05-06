@@ -92,6 +92,7 @@ public class CustomerListActivity extends ActionBarActivity {
     //Value used to check if SEND_SMS Permission is Granted or Denied
     int MY_PERMISSIONS_REQUEST_SEND_SMS = 1;
 
+
     //Create an Array of parameters that are needed for the output to the user
     //This is what the end user will see - ID number, First Name, Last Name
     final String[] from = new String[]{DatabaseHelper._ID,
@@ -110,8 +111,6 @@ public class CustomerListActivity extends ActionBarActivity {
             //If Permission is denied, initialize a window that asks for Permission
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS},
                     MY_PERMISSIONS_REQUEST_SEND_SMS);
-
-
         }
 
         //Set default text when database is empty
@@ -144,6 +143,7 @@ public class CustomerListActivity extends ActionBarActivity {
                 TextView idTextView = (TextView) view.findViewById(R.id.id);
                 TextView nameTextView = (TextView) view.findViewById(R.id.name);
                 TextView numberTextView = (TextView) view.findViewById(R.id.number);
+
 
                 //Retrieves input from fields & converts to String
                 String id = idTextView.getText().toString();

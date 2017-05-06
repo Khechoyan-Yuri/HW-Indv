@@ -43,6 +43,8 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
     private Button addBtn;
     private EditText customerEditText;
     private EditText phNumEditText;
+
+
     //Declare Receipt for checking if SMS has been Sent & Delivered
     String SENT = "SMS_SENT";
     String DELIVERED = "SMS-DELIVERED";
@@ -111,19 +113,13 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
         else{
             switch (v.getId()) {
                 case R.id.add_record:
-
-
                     Log.d(TAG, "onClick: " + customerEditText.getText());
-
-
 
                     //Adds newly given information & adds them to the the SQLite Database
                     dbManager.insert(name, phonenum);
 
                     //Calls Method to send SMS text Message Confirmation
                     sendSMSConfirm();
-
-
 
                 /*
 

@@ -16,6 +16,8 @@ public class ModifyCustomerActivity extends Activity implements OnClickListener 
     private Button updateBtn, deleteBtn;
 
     private long _id;
+    private String name;
+    private String phonenum;
 
     //Declaring DBManager object
     private DBManager dbManager;
@@ -48,7 +50,7 @@ public class ModifyCustomerActivity extends Activity implements OnClickListener 
         String name = intent.getStringExtra("name");
         String phnum = intent.getStringExtra("phnum");
 
-        //Parses inputted ata for id
+        //Parses inputted data for id
         _id = Long.parseLong(id);
 
         //Sets text inside user info modification window

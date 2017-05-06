@@ -18,11 +18,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String DB_NAME = "CUSTOMERS.DB";
 
     // database version
-    static final int DB_VERSION = 1;
+    static final int DB_VERSION = 2;
 
     // Creating table query
     private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + _ID
-            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + NAME + " TEXT NOT NULL, " + PHONENUM + " TEXT);";
+            + " INTEGER PRIMARY KEY, " + NAME + " TEXT NOT NULL, " + PHONENUM + " TEXT);";
 
     //Creates Constructor
     public DatabaseHelper(Context context) {

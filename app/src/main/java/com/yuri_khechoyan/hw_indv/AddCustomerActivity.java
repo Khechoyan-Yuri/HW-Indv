@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 //import com.twilio.Twilio;
@@ -42,9 +43,6 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
     private Button addBtn;
     private EditText customerEditText;
     private EditText phNumEditText;
-    private int position;
-    //Value used to check if SEND_SMS Permission is Granted or Denied
-    int MY_PERMISSIONS_REQUEST_SEND_SMS = 1;
     //Declare Receipt for checking if SMS has been Sent & Delivered
     String SENT = "SMS_SENT";
     String DELIVERED = "SMS-DELIVERED";
@@ -60,9 +58,6 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //Initialize position variable
-        position = 1;
 
         //Initialize Pending Intent (SENT)
         sentPI = PendingIntent.getBroadcast(this, 0, new Intent(SENT), 0);
@@ -93,12 +88,11 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.add_record:
-
                 //Connects variables to layout elements
                 customerEditText = (EditText) findViewById(R.id.name_edittext);
                 phNumEditText = (EditText) findViewById(R.id.phonenumber_edittext);
 
-                Log.d(TAG, "onClick: " + customerEditText);
+                Log.d(TAG, "onClick: " + customerEditText.getText());
 
                 //Extracts info from EditText fields
                 final String name = customerEditText.getText().toString();
@@ -128,15 +122,9 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
 
                 */
 
-                //Increments position - so that next person can
-                //receive their current position in queue
-                position++;
-
-
-
-
                 //Throw toast for verification
-                Toast.makeText(this, "Submission Complete! Confirmation is being sent", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Submission Complete! Confirmation is being sent to " +name
+                                +"'s phone: " + phonenum, Toast.LENGTH_LONG).show();
 
                 //While verification toast is thrown, app goes back to the ListActivity View (main menu)
                 Intent main = new Intent(AddCustomerActivity.this, CustomerListActivity.class)
@@ -147,30 +135,40 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
         }
     }
 
+
     //Method for sending SMS Text message to user after registration is complete
     public void sendSMSConfirm(){
+
+
         //Extracts info from EditText fields
         final String name = customerEditText.getText().toString();
         final String phonenum = phNumEditText.getText().toString();
 
         //Create pre-defined message for SMS
-        String message = "Confirmed! Thank you for registering with {Company} " +name +
-                "You are currently " +position + " in line. Please be patient for your name "
-                +"to be called. \n\n -{Company}";
+        String message = "Confirmed! Thank you for registering with [Company], " +name +
+                "! Please be patient with us. Your name will be called. \n\n - [Company]";
 
+
+        //Log.d("AddCustomerActivity", message);
+       /*
         //Checks condition if the SEND_SMS Permission is Granted or Denied
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS)
-                != PackageManager.PERMISSION_GRANTED){
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED){
 
             //If Permission is denied, initialize a window that asks for Permission
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.SEND_SMS},
                     MY_PERMISSIONS_REQUEST_SEND_SMS);
+
+            Log.d("AddCustomer", "Not Send SMS: " + message);
         }
         else{
+*/
+
             //If Permission is Granted/Initially enabled, send the Confirm SMS
             SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(phonenum, null, message, sentPI, deliveredPI);
-        }
+            Log.d("AddCustomer", "Sent SMS: " + message);
+
+
     }
 
     @Override
@@ -242,8 +240,7 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
 
         //Registering the BroadcastReceivers
         registerReceiver(smsSentReceiver, new IntentFilter(SENT));
-        registerReceiver(smsSentReceiver, new IntentFilter(DELIVERED));
-
+        registerReceiver(smsDeliveredReceiver, new IntentFilter(DELIVERED));
     }
 
     @Override
@@ -251,8 +248,15 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
         super.onPause();
 
         //Unregister the BroadcastReceivers
-        //unregisterReceiver(smsSentReceiver);
-        //unregisterReceiver(smsDeliveredReceiver);
+        unregisterReceiver(smsSentReceiver);
+        unregisterReceiver(smsDeliveredReceiver);
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+
+
     }
 
 

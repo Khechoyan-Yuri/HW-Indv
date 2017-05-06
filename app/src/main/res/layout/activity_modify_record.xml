@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Enter #"
-        android:minLines="5" >
+        android:minLines="1" >
     </EditText>
 
     <LinearLayout

@@ -86,23 +86,42 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.add_record:
-                //Connects variables to layout elements
-                customerEditText = (EditText) findViewById(R.id.name_edittext);
-                phNumEditText = (EditText) findViewById(R.id.phonenumber_edittext);
+        //Connects variables to layout elements
+        customerEditText = (EditText) findViewById(R.id.name_edittext);
+        phNumEditText = (EditText) findViewById(R.id.phonenumber_edittext);
+        //Extracts info from EditText fields
+        final String name = customerEditText.getText().toString();
+        final String phonenum = phNumEditText.getText().toString();
 
-                Log.d(TAG, "onClick: " + customerEditText.getText());
+        //If Statements - Check contents of String Variables
+        //Both Fields are empty
+        if(name.equals("") && phonenum.equals("")){
+            //Throw toast
+            Toast.makeText(this, "BOTH FIELDS ARE EMPTY!", Toast.LENGTH_SHORT).show();
+        }
+        //Name Field is empty
+        else if (name.equals("")){
+            Toast.makeText(this, "NAME WAS NOT ENTERED!", Toast.LENGTH_SHORT).show();
+        }
+        //Phone number Field is empty
+        else if (phonenum.equals("")){
+            Toast.makeText(this, "PHONE NUMBER WAS NOT ENTERED!", Toast.LENGTH_SHORT).show();
+        }
+        //If Both Fields have content, proceed with adding Customer to DB
+        else{
+            switch (v.getId()) {
+                case R.id.add_record:
 
-                //Extracts info from EditText fields
-                final String name = customerEditText.getText().toString();
-                final String phonenum = phNumEditText.getText().toString();
 
-                //Adds newly given information & adds them to the the SQLite Database
-                dbManager.insert(name, phonenum);
+                    Log.d(TAG, "onClick: " + customerEditText.getText());
 
-                //Calls Method to send SMS text Message Confirmation
-                sendSMSConfirm();
+
+
+                    //Adds newly given information & adds them to the the SQLite Database
+                    dbManager.insert(name, phonenum);
+
+                    //Calls Method to send SMS text Message Confirmation
+                    sendSMSConfirm();
 
 
 
@@ -122,16 +141,17 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
 
                 */
 
-                //Throw toast for verification
-                Toast.makeText(this, "Submission Complete! Confirmation is being sent to " +name
-                                +"'s phone: " + phonenum, Toast.LENGTH_LONG).show();
+                    //Throw toast for verification
+                    Toast.makeText(this, "Submission Complete! Confirmation is being sent to " +name
+                            +"'s phone: " + phonenum, Toast.LENGTH_LONG).show();
 
-                //While verification toast is thrown, app goes back to the ListActivity View (main menu)
-                Intent main = new Intent(AddCustomerActivity.this, CustomerListActivity.class)
-                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    //While verification toast is thrown, app goes back to the ListActivity View (main menu)
+                    Intent main = new Intent(AddCustomerActivity.this, CustomerListActivity.class)
+                            .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-                startActivity(main);
-                break;
+                    startActivity(main);
+                    break;
+            }
         }
     }
 

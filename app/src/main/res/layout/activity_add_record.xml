@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="5dp" >
+    android:padding="50dp" >
 
     <EditText
         android:id="@+id/name_edittext"
@@ -26,4 +26,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Register" />
+
 </LinearLayout>

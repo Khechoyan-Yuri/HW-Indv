@@ -3,28 +3,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="50dp" >
+    android:padding="15dp">
 
     <EditText
         android:id="@+id/name_edittext"
-        android:layout_width="match_parent"
+        android:layout_width="303dp"
         android:layout_height="wrap_content"
-        android:hint="Name" >
+        android:hint="Name"
+        android:padding="10dp">
         <requestFocus />
     </EditText>
 
     <EditText
         android:id="@+id/phonenumber_edittext"
-        android:layout_width="match_parent"
+        android:layout_width="299dp"
         android:layout_height="wrap_content"
-        android:hint="#">
+        android:hint="#"
+        android:padding="10dp">
     </EditText>
+
 
     <Button
         android:id="@+id/add_record"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:padding="10dp"
+        android:paddingBottom="10dp"
+        android:paddingEnd="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
         android:text="Register" />
 
 </LinearLayout>

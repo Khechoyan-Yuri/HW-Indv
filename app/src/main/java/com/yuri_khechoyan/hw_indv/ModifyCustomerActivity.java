@@ -14,7 +14,6 @@ public class ModifyCustomerActivity extends Activity implements OnClickListener 
     private EditText nameText;
     private EditText numberText;
     private Button updateBtn, deleteBtn;
-
     private long _id;
     private String name;
     private String phonenum;

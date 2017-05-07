@@ -22,7 +22,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="6dp"
         android:padding="3dp"
-        android:text="25"
+        android:text=""
         android:visibility="visible" />
 
     <TextView

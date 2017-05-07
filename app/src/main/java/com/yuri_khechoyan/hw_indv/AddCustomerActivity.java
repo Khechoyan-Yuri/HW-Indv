@@ -43,6 +43,9 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
     private Button addBtn;
     private EditText customerEditText;
     private EditText phNumEditText;
+    private TextView posInLine;
+    //Used for the place in queue
+    long place;
 
 
     //Declare Receipt for checking if SMS has been Sent & Delivered
@@ -91,6 +94,7 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
         //Connects variables to layout elements
         customerEditText = (EditText) findViewById(R.id.name_edittext);
         phNumEditText = (EditText) findViewById(R.id.phonenumber_edittext);
+        posInLine = (TextView) findViewById(R.id.positionInLine);
         //Extracts info from EditText fields
         final String name = customerEditText.getText().toString();
         final String phonenum = phNumEditText.getText().toString();
@@ -116,7 +120,9 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
                     Log.d(TAG, "onClick: " + customerEditText.getText());
 
                     //Adds newly given information & adds them to the the SQLite Database
-                    dbManager.insert(name, phonenum);
+                    //Also customer  position in queue
+                    //Then adds that current position to the SMS message
+                    place = dbManager.insert(name, phonenum);
 
                     //Calls Method to send SMS text Message Confirmation
                     sendSMSConfirm();
@@ -151,10 +157,8 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
         }
     }
 
-
     //Method for sending SMS Text message to user after registration is complete
     public void sendSMSConfirm(){
-
 
         //Extracts info from EditText fields
         final String name = customerEditText.getText().toString();
@@ -162,7 +166,8 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
 
         //Create pre-defined message for SMS
         String message = "Confirmed! Thank you for registering with [Company], " +name +
-                "! Please be patient with us. Your name will be called. \n\n - [Company]";
+                "! You are currently (" +place + ") in line. Please be patient with us." +
+                " Your name will be called. \n\n - [Company]";
 
 
         //Log.d("AddCustomerActivity", message);
@@ -178,13 +183,10 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
         }
         else{
 */
-
             //If Permission is Granted/Initially enabled, send the Confirm SMS
             SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(phonenum, null, message, sentPI, deliveredPI);
             Log.d("AddCustomer", "Sent SMS: " + message);
-
-
     }
 
     @Override
@@ -250,7 +252,6 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
                                 Toast.LENGTH_SHORT).show();
                         break;
                 }
-
             }
         };
 
@@ -271,20 +272,5 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
     @Override
     protected void onDestroy(){
         super.onDestroy();
-
-
     }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-

@@ -34,7 +34,7 @@ SUMMARY
         in line. Please be patient with us. Your name will be called. - [Company]"
 
         * - 'x' is the current position where the customer stands in the list
-        
+
 //##########################################################################
 
 INPUT
@@ -85,13 +85,14 @@ public class CustomerListActivity extends ActionBarActivity {
     int MY_PERMISSIONS_REQUEST_SEND_SMS = 1;
 
 
+
     //Create an Array of parameters that are needed for the output to the user
     //This is what the end user will see - ID number, First Name, Last Name
     final String[] from = new String[]{DatabaseHelper._ID,
-            DatabaseHelper.NAME, DatabaseHelper.PHONENUM};
+            DatabaseHelper.NAME, DatabaseHelper.PHONENUM, DatabaseHelper.POSINLINE};
 
     //Connect each variable to their respected layout elements
-    final int[] to = new int[]{R.id.id, R.id.name, R.id.number};
+    final int[] to = new int[]{R.id.id, R.id.name, R.id.number, R.id.positionInLine};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,7 +153,6 @@ public class CustomerListActivity extends ActionBarActivity {
             }
         });
     }
-
 
     //Creates the '+' button in ActionBar for user to press
     @Override

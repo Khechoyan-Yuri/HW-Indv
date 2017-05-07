@@ -3,6 +3,9 @@ package com.yuri_khechoyan.hw_indv;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import static android.content.ContentValues.TAG;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -19,21 +22,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String DB_NAME = "CUSTOMERS.DB";
 
     // database version
-    static final int DB_VERSION = 2;
+    static final int DB_VERSION = 10;
 
     // Creating table query
     private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + _ID
-            + " INTEGER PRIMARY KEY, " + NAME + " TEXT NOT NULL, " + PHONENUM + " TEXT);";
-            /*+POSINLINE + "INTEGER*/
+            + " INTEGER PRIMARY KEY, " + NAME + " TEXT NOT NULL, " + PHONENUM + " TEXT, "
+            +POSINLINE + " INTEGER);";
+
 
     //Creates Constructor
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
+    //onCreate Method
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE);
+
+        Log.d(TAG, "onCreate: DB Created");
     }
 
     //Method for updating DB

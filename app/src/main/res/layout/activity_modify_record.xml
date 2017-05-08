@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp" >
+    android:padding="15dp" >
 
     <EditText
         android:id="@+id/name_edittext"
@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:ems="10"
+        android:padding="10dp"
         android:hint="Enter Name" />
 
     <EditText
@@ -19,6 +20,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Enter #"
+        android:padding="10dp"
         android:minLines="1" >
     </EditText>
 

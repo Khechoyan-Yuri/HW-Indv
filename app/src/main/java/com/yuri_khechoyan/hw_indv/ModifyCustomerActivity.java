@@ -15,8 +15,6 @@ public class ModifyCustomerActivity extends Activity implements OnClickListener 
     private EditText numberText;
     private Button updateBtn, deleteBtn;
     private long _id;
-    private String name;
-    private String phonenum;
 
     //Declaring DBManager object
     private DBManager dbManager;
@@ -78,10 +76,6 @@ public class ModifyCustomerActivity extends Activity implements OnClickListener 
             //Delete button
             case R.id.btn_delete:
                 dbManager.delete(_id);
-
-                //***********Place SMSDelete Method Call here**********************
-
-
                 this.returnHome();
                 break;
         }

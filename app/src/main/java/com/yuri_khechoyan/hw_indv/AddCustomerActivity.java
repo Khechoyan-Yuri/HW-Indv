@@ -43,7 +43,7 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
     private Button addBtn;
     private EditText customerEditText;
     private EditText phNumEditText;
-    private TextView posInLine;
+
     //Used for the place in queue
     long place;
 
@@ -94,7 +94,7 @@ public class AddCustomerActivity extends Activity implements OnClickListener {
         //Connects variables to layout elements
         customerEditText = (EditText) findViewById(R.id.name_edittext);
         phNumEditText = (EditText) findViewById(R.id.phonenumber_edittext);
-        posInLine = (TextView) findViewById(R.id.positionInLine);
+
         //Extracts info from EditText fields
         final String name = customerEditText.getText().toString();
         final String phonenum = phNumEditText.getText().toString();

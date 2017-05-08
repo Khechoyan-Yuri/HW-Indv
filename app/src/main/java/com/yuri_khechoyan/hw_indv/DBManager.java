@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+
+import static com.yuri_khechoyan.hw_indv.DatabaseHelper.NAME;
+import static com.yuri_khechoyan.hw_indv.DatabaseHelper.PHONENUM;
 import static com.yuri_khechoyan.hw_indv.DatabaseHelper.POSINLINE;
 import static com.yuri_khechoyan.hw_indv.DatabaseHelper.TABLE_NAME;
 import static com.yuri_khechoyan.hw_indv.DatabaseHelper._ID;
@@ -17,6 +20,8 @@ public class DBManager {
     private Context context;
     //Initializes SQLite database
     private SQLiteDatabase database;
+
+    long placeDel;
 
     //Creates DBManager constructor
     public DBManager(Context c) {
@@ -94,6 +99,7 @@ public class DBManager {
 
     //Method called if customer will be deleted from the DB & ListView - ModifyCustomerActivity
     public void delete(long _id) {
+
         //Delete entire row: customer is removed
         database.delete(TABLE_NAME, DatabaseHelper._ID + " = " + _id, null);
 
@@ -104,7 +110,34 @@ public class DBManager {
         //update t23
         //2  set age = age + 6
         //3  where id = 2
-
         database.close();
+
     }
+
+//    public void deleteCustomer(long _id, DatabaseUtils dop){
+//
+//        String customerName;
+//        int delCustomer;
+//
+//
+//        database.execSQL("SELECT " +NAME +" , " +PHONENUM +" , " +POSINLINE +" " +" FROM "
+//        +TABLE_NAME +" WHERE " + _ID +" > " +_id);
+//
+//
+//        String[] columns = new String[] { DatabaseHelper._ID, DatabaseHelper.NAME, DatabaseHelper.PHONENUM,
+//                DatabaseHelper.POSINLINE};
+//
+//        Cursor cursor = database.query(TABLE_NAME, columns, null, null, null, null, null);
+//
+//        database.query(TABLE_NAME, new String[] {NAME}, "NAME = ?",
+//                new String[]{ ""/*+customerName*/ +"" }, null, null, null, null);
+//
+//
+//
+//
+//        //Return value SQL
+//        //Get Value, assign to new var
+//        //use var in deletion sms activity
+//    }
+//
 }
